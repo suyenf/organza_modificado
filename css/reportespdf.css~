@@ -1,0 +1,6 @@
+table{margin: auto;}
+table, tr, td{
+	border: 3px solid black;
+	border-collapse: collapse;
+	padding: .3em 1.5em;
+}

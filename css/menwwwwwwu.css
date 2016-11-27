@@ -1,0 +1,303 @@
+/**
+ *********************************************
+ * Prototype of styles for horizontal CSS-menu
+ * @data 30.06.2009
+ *********************************************
+ * (X)HTML-scheme:
+ *  <div id="menu">
+ *      <ul class="menu">
+ *          <li><a href="#" class="parent"><span>level 1</span></a>
+ *              <ul>
+ *                  <li><a href="#" class="parent"><span>level 2</span></a>
+ *                      <ul><li><a href="#"><span>level 3</span></a></li></ul>
+ *                  </li>
+ *              </ul>
+ *          </li>
+ *          <li class="last"><a href="#"><span>level 1</span></a></li>
+ *      </ul>
+ *  </div>
+ *********************************************
+ */
+
+/* menu::base */
+body{
+background: #212121 url("../img/fondo.jpg");
+	color: #000c46;
+	font-family: Helvetica, Verdana;
+	font-size: 1em;
+	
+}
+div#menu {
+    height: 88px;
+    padding-left: 24px;
+    background: url("../img/left.png") no-repeat;
+    _background-image: url(../img/ie-left.png);
+    width:900px;
+	list-style: none;
+}
+
+div#menu ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    float: left;
+}
+div#menu ul.menu {
+    padding-right: 24px;
+    background: url("../img/right.png") no-repeat right 0;
+    _background-image: url(../img/ie-right.png);
+}
+
+div#menu li {
+    position: relative;
+    margin: 0;
+    padding: 0 12px 0 0;
+    display: block;
+    float: left;
+    z-index: 9;
+    width: 104px;	
+	display: inline;
+margin-right:-0.2em;/*espacio horizontal*/
+margin-lef:0.1em;/*espacio horizontal*/
+}
+div#menu ul ul li {
+    z-index: 9;
+
+}
+div#menu li div {
+    list-style: none;
+    float: left;
+    position: absolute;
+    z-index: 11;
+    top: 83px;
+    left: 0;
+    visibility: hidden;
+    width: 194px;
+    padding: 0 0 16px 0;
+    background: url("../img/submenu-bottom.png") no-repeat 15px bottom;
+    margin: 1px 0 0 0;
+
+}
+div#menu li:hover>div {
+    visibility: visible;
+}
+
+div#menu a {
+    position: relative;
+    z-index: 10;
+    height: 41px;
+    display: block;
+    float: left;
+    line-height: 41px;
+    text-decoration: none;
+    margin-top: 1px;
+    white-space: pre-line;
+    width: 118px;
+    padding-right:5px;
+    text-align:center;
+}
+div#menu span {
+    display: block;
+    cursor: pointer;
+    background-repeat: no-repeat;
+    background-position: 95% 0;
+    text-align: center;
+}
+
+/* menu::level1 */
+div#menu a {
+    padding: 0 10px 0 0;
+    line-height: 75px;
+    height: 88px;
+    margin-right: 11px;
+    _margin-right: 1px;
+    text-transform: uppercase;
+    background: none;
+}
+div#menu span {
+    margin-top: 5px;
+    padding-left: 10px;
+    color: #fff;
+    font: normal 15px 'Trebucher MS', Helvetica, Arial, sans-serif;
+    font-weight:  bold;
+    background: none;
+    line-height: 75px;
+}
+div#menu a:hover {
+    background: url("../img/selected-right.png") no-repeat right 23px;
+}
+div#menu a:hover span {
+    background: url("../img/selected-left.png") no-repeat 0 18px;
+}
+div#menu li.current a,
+div#menu ul.menu>li:hover>a {
+    background: url("../img/selected-right.png") no-repeat right 23px;
+}
+div#menu li.current a span,
+div#menu ul.menu>li:hover>a span {
+    background: url("../img/selected-left.png") no-repeat 0 18px;
+}
+div#menu li {  }
+div#menu li.last { background: none; }
+
+/* menu::level2 */
+div#menu ul ul li {
+    background: none;
+    padding: 0;
+}
+div#menu ul ul {/*SUB MENU DENTRO DE OTRO SUB MENU*/
+    padding-top: 10px;
+    width: 194px;
+    background: url("../img/submenu-top.png") no-repeat;
+    background-image: url("../img/ie-submenu-top.gif");
+}
+div#menu ul ul a {
+    padding: 0;
+    height: auto;
+    float: none;
+    display: block;
+    line-height: 26px;
+    font-size: 18px;
+    color: #fff;
+    z-index: -1;
+    padding-left: 5px;
+    white-space: normal;
+    width: 152px;
+    margin-left: 18px;
+    text-transform: none;
+}
+div#menu ul ul a span {
+    line-height: 26px;
+    font-size: 14px;
+	
+}
+div#menu li.current ul a,
+div#menu li.current ul a span {
+    background:none;
+}
+div#menu ul ul a:hover {
+    background: url("../img/submenu-selected-bottom.png") no-repeat 5px bottom;
+}
+div#menu ul ul a:hover span {
+    background: url("../img/submenu-selected-top.png") no-repeat 0 0;
+}
+div#menu ul ul a.parent {
+    background: url("../img/submenu-pointer-bottom.gif") no-repeat 5px bottom;
+}
+div#menu ul ul a.parent span {
+    background: url("../img/submenu-pointer-top.png") no-repeat 0 0;
+}
+div#menu ul ul a.parent:hover {
+    background: url("../img/submenu-pointer-selected-bottom.png") no-repeat 5px bottom;
+}
+div#menu ul ul a.parent:hover span {
+    background: url("../img/submenu-selected-top.png") no-repeat 0 0;
+}
+div#menu ul ul span {
+    margin-top: 0;
+    text-align: left;
+}
+div#menu ul ul li.last { background: none; }
+div#menu ul ul li {
+    width: 100%;
+}
+
+/* menu::level3 */
+div#menu ul ul div {
+    padding-top: 20px;
+    margin: -92px 0 0 157px !important;
+    margin-left: 160px;
+    background: url("../img/subsubmenu-top.png") no-repeat 15px 0;
+}
+div#menu ul ul ul {
+    padding-top: 0;
+    background: url("../img/submenu-bottom.png") no-repeat 15px bottom;
+}
+div#menu ul ul div li {
+    position:relative;
+    top:-10px;
+}
+
+/* lava lamp */
+div#menu li.back {
+    background: url("../img/selected-left.png") no-repeat 0 0;
+    width: 10px;
+    height: 39px;
+    z-index: 8;
+    position: absolute;
+    padding: 0;
+    margin: 24px 0 0 0;
+}
+div#menu li.back .left {
+    padding:0;
+    width:1094px;
+    background: url("../img/selected-right.png") no-repeat right 0;
+    height: 39px;
+    margin: 0 0 0 14px;
+    float: none;
+    position: relative;
+    top: 0;
+    left: 0;
+    visibility: visible;
+}
+
+* { margin:0;
+    padding:0;
+}
+/*body { background:#171717; }*/
+div#menu {
+    margin:30px auto;
+    width:80%;
+}
+div#copyright {
+    margin:0 auto;
+    width:80%;
+	font:11px 'Trebuchet MS';
+    color:#fff;
+    text-indent:20px;
+    padding:40px 0 0 0;
+}
+div#copyright a { color:#00bfff; }
+div#copyright a:hover { color:#0c1d3d; }
+
+
+/*CAJAS DE TEXTOS*/
+section#trabajos{
+	//background: #1E6381;
+	border-radius: .5em;
+	   	border: 3px solid #4196bb; 
+	margin: 0 auto;
+	max-width: 50%;
+	padding: .5em;
+	text-align: center;
+//	background-color: #344567;
+	//box-shadow:5px 5px 10px rgba(255,255,255,.7);
+	}
+	
+section#fastido{
+	//background: #1E6381;
+	border-radius: .5em;
+	border:1px solid #4196bb; 
+	margin:  0 0 0 14px;
+	max-width: 80%;
+	padding: .1em;
+	text-align: inherit;
+	background-color: #fff;
+	box-shadow:5px 5px 10px rgba(25,55,255,.7);
+	}
+	
+	
+	
+section#yo{
+	background: #1E6381;
+	border-radius: .5em;
+	border: 2px solid #4196bb; 
+	margin: 0 auto;
+	max-width: 70%;
+	padding: .5em;
+	text-align: center;
+//	background-color: #344567;
+	//box-shadow:5px 5px 10px rgba(255,255,255,.7);	
+}
+
+

@@ -1,0 +1,51 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<style type="text/css">
+		*{ font-family: sans-serif; margin: 0;}
+		dl{ margin: 60px auto; width: 600px; }
+		dt, dd{ padding: 20px; }
+		dt{ background: #333333; color: white; border-bottom: 1px solid #141414; border-top: 1px solid #4E4E4E; cursor: pointer; }
+		dd{ background: #F5F5F5; line-height: 1.6em; }
+		dt.activo, dt:hover{ background: #424242; }
+
+		dt:before{ content: "▸"; margin-right: 10px; }
+		dt.activo:before{ content: "▾"; }
+	</style>
+</head>
+<body>
+	<dl>
+		<dt>Titulo 1</dt>
+		<dd>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consectetur maxime cupiditate nesciunt molestias itaque vel reiciendis officiis explicabo cum impedit dolorem quod minus beatae architecto necessitatibus sed exercitationem aliquam omnis!</dd>
+
+		<dt>Titulo 2</dt>
+		<dd>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptates mollitia quos! Dolor cum vitae aperiam deserunt hic quas quidem qui excepturi minima repudiandae pariatur id sit dignissimos laborum provident velit!</dd>
+
+		<dt>Titulo 3</dt>
+		<dd>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Optio voluptatum expedita sunt voluptatibus ratione assumenda quo animi numquam blanditiis asperiores illo laudantium et quae itaque reiciendis nam ducimus officiis officia?</dd>
+
+		<dt>Titulo 4</dt>
+		<dd>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto obcaecati numquam nemo quasi omnis accusamus illo distinctio doloribus architecto culpa maiores blanditiis laborum accusantium assumenda vero necessitatibus optio? Ipsa perferendis.</dd>
+
+		<dt>Titulo 5</dt>
+		<dd>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto obcaecati numquam nemo quasi omnis accusamus illo distinctio doloribus architecto culpa maiores blanditiis laborum accusantium assumenda vero necessitatibus optio? Ipsa perferendis.</dd>
+	</dl>
+	<script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
+	<script type="text/javascript">
+	  $('dl dd').not('dt.activo + dd').hide();
+       $('dl dt').click(function(){
+          if ($(this).hasClass('activo')) {
+               $(this).removeClass('activo');
+               $(this).next().slideUp();
+          } else {
+               $('dl dt').removeClass('activo');
+               $(this).addClass('activo');
+               $('dl dd').slideUp();
+               $(this).next().slideDown();
+          }
+       });
+	</script>
+</body>
+</html>

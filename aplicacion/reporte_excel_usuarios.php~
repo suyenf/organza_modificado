@@ -1,0 +1,54 @@
+<?php
+//Exportar datos de php a Excel
+header("Content-Type: application/vnd.ms-excel");
+header("Expires: 0");
+header("Cache-Control: must-revalidate, post-check=0, pre-check=0");
+header("content-disposition: attachment;filename=Reportes_usuarios_registrados.xls");
+?>
+<HTML LANG="es">
+<TITLE>::. Exportacion de Datos .::</TITLE>
+</head>
+<body>
+<?php
+/*$NombreBD = "agenda";
+$Servidor = "localhost";
+$Usuario = "root";
+$Password ="";
+$IdConexion = mysql_connect($Servidor, $Usuario, $Password);
+mysql_select_db($NombreBD, $IdConexion);*/
+
+    include_once '../nucleo_php/coneccion.php';
+	include_once '../nucleo_php/funciones.php';
+
+
+$sql = "SELECT id_cliente, nombre_c, apellido_c,ci,direccion FROM cliente ORDER BY id_cliente,ci";
+$result=mysql_qry($sql);
+
+?>
+
+<TABLE BORDER=1 align="center" CELLPADDING=1 CELLSPACING=1>
+<TR>
+<TD>Nº</TD>
+<TD>NOMBRE</TD>
+<TD>APELLIDO</TD>
+<TD>CEDULA</TD>
+<TD>DIRECCION</TD>
+
+</TR>
+<?php
+
+while($row = mysql_fetch_array($result)) {
+printf("<tr>
+<td>&nbsp;%s</td>
+<td>&nbsp;%s&nbsp;</td>
+<td>&nbsp;%s</td>
+<td>&nbsp;%s</td>
+<td>&nbsp;%s</td>
+</tr>", $row["id_cliente"],$row["nombre_c"],$row["apellido_c"],$row["ci"],$row["direccion"]);
+}
+mysql_free_result($result);
+
+?>
+</table>
+</body>
+</html>

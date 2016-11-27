@@ -1,0 +1,8 @@
+@font-face {
+    font-family: 'Chalet';
+    src: url('Chalet.eot');
+    src: url('Chalet.eot?#iefix') format('embedded-opentype'),
+        url('Chalet.woff') format('woff'),
+        url('Chalet.ttf') format('truetype'),
+        url('Chalet.svg') format('svg');
+}

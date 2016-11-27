@@ -1,0 +1,70 @@
+@font-face {
+	font-family: 'icomoon';
+	src:url('fonts/icomoon.eot?urxwnv');
+	src:url('fonts/icomoon.eot?#iefixurxwnv') format('embedded-opentype'),
+		url('fonts/icomoon.woff?urxwnv') format('woff'),
+		url('fonts/icomoon.ttf?urxwnv') format('truetype'),
+		url('fonts/icomoon.svg?urxwnv#icomoon') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+	font-family: 'icomoon';
+	speak: none;
+	font-style: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	line-height: 1;
+
+	/* Better Font Rendering =========== */
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+.icon-home:before {
+	content: "\e600";
+}
+.icon-pencil:before {
+	content: "\e601";
+}
+.icon-drawer:before {
+	content: "\e602";
+}
+.icon-disk:before {
+	content: "\e603";
+}
+.icon-storage:before {
+	content: "\e604";
+}
+.icon-user:before {
+	content: "\e605";
+}
+.icon-binoculars:before {
+	content: "\e606";
+}
+.icon-search:before {
+	content: "\e607";
+}
+.icon-eye:before {
+	content: "\e608";
+}
+.icon-exit:before {
+	content: "\e609";
+}
+.icon-file-pdf:before {
+	content: "\e60a";
+}
+.icon-file-excel:before {
+	content: "\e60b";
+}
+.icon-user2:before {
+	content: "\e60c";
+}
+.icon-thumbsup:before {
+	content: "\e60d";
+}
+.icon-keyboard:before {
+	content: "\e60e";
+}

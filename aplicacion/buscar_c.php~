@@ -1,0 +1,99 @@
+<?php
+	include_once '../nucleo_php/coneccion.php';
+	include_once '../nucleo_php/funciones.php';
+?>
+
+<!DOCTYPE HTML>
+<html lang="es">
+	<head>
+		<meta charset="utf-8"/>
+		<title>Sistema de Inventario</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1"/>
+		<link rel="shortcut icon" type="image/x-icon" href="../favicon2.ico"/>
+		<link rel="sitemap" type="aplication/xml" title="sitemap" href="sitemap.xml"/>
+		<link rel="stylesheet" href="./../css/flexslider.css"/>
+		<link rel="stylesheet" href="./../css/menu.css"/>
+		<script type="text/javascript" src="./../js/jquery.js"></script>
+		<script type="text/javascript" src="./../js/menu.js"></script>
+		<script type="text/javascript" src="./../js/jquery.min.js"></script>
+		<script type="text/javascript" src="./../js/jquery-ui-1.10.4.custom.min.js"></script>
+		<script src="./../js/jquery.flexslider.js"></script>
+		<script>
+			$(document).ready(function(){
+				$("a,.btn").button();
+				$(".flexslider").flexslider();
+			})
+		</script>
+	</head>
+	<body>
+		<?php include_once './fragmentos/menu_header.php'; ?>
+	
+
+
+    </br></br></br></br>				  				  
+    <h1>BUSCAR CLIENTE</h1>
+    </br>
+    </br>
+    <article>
+        <section id="colmo">
+            <nav>
+
+                <form method="post" action="">
+                    <br><br> <br><br>
+                    Introduzca C&eacute;dula : <input type="text" name="ci"><br><br>
+                    <br>
+                  <!--  <input type="Submit" name="enviar" value=Buscar">-->
+                    <input type="submit" value="Enviar" class="ui-button ui-button-text" name="enviar"/>
+
+                </form> 
+
+                <?php
+                if (isset($_POST['ci']) && !empty($_POST['ci'])) {
+                    $sql = "SELECT id_cliente, nombre_c, apellido_c,ci FROM cliente WHERE ci = %s LIMIT 1";
+                    $sql = sprintf($sql, $_POST['ci']);
+
+                    $res = mysql_qry($sql); // se inserta la data ejecutando la consulta sql
+                    if (mysql_num_rows($res) == 1) {
+                        $fila = mysql_fetch_assoc($res);
+                        //print_r($fila);
+                        ?>
+                        <p>
+                        <table>
+                            <tr>
+                                <td>Cedula </td>
+                                <td>Nombre</td>
+                                <td>Apellido</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <a href="modificar_c.php?id=<?php echo $fila['id_cliente'] ?>">
+                                        <?php echo $fila['ci'] ?>
+                                    </a>
+                                </td>
+                                <td><?php echo $fila['nombre_c'] ?></td>
+                                <td><?php echo $fila['apellido_c'] ?></td>
+                            </tr>
+                        </table>
+                        </p>
+                        <?php
+                    }
+                }
+                ?> 
+            </nav>
+
+
+        </section>	
+
+    </article>
+
+
+
+    </br>
+    </br>
+    </br>
+    <ul><li>
+		<?php require_once './fragmentos/pie_de_pagina.php'; 
+		?>
+	</li>
+	</body>
+</html>

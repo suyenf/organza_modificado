@@ -1,0 +1,84 @@
+<?php
+	include_once '../nucleo_php/coneccion.php';
+	include_once '../nucleo_php/funciones.php';
+?>
+
+<!DOCTYPE HTML>
+<html lang="es">
+	<head>
+		<meta charset="utf-8"/>
+		<title>Sistema de Inventario</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1"/>
+		<link rel="shortcut icon" type="image/x-icon" href="../favicon2.ico"/>
+		<link rel="sitemap" type="aplication/xml" title="sitemap" href="sitemap.xml"/>
+		<link rel="stylesheet" href="./../css/flexslider.css"/>
+		<link rel="stylesheet" href="./../css/menu.css"/>
+		<script type="text/javascript" src="./../js/jquery.min.js"></script>
+		<script type="text/javascript" src="./../js/jquery-ui-1.10.4.custom.min.js"></script>
+		<script src="./../js/jquery.flexslider.js"></script>
+		<script>
+			$(document).ready(function(){
+				$("a").button();
+				$(".flexslider").flexslider();
+			})
+		</script>
+	</head>
+	
+	<!--TRABAJO DE MAQUETADO DE LA CABEZERA-->
+	<body>
+		<?php include_once './fragmentos/menu_header.php'; ?>
+		</br></br></br></br>
+		<h1>BUSCAR PRODUCTO</h1>
+		</br></br>
+		<article>
+			<section id="colmo">
+				<nav>
+					<form method="post" action="">
+						<br><br> <br><br>
+						Ingrese el Tipo de Producto : <input type="text" name="nombre_p"><br><br>
+						<input type="Submit" name="enviar" value="Buscar" class="ui-button ui-button-text" >
+					</form>
+					<?php
+						if(isset($_POST['nombre_p']) && !empty($_POST['nombre_p'])){
+							$sql = "SELECT * FROM producto WHERE nombre_p = '%s' LIMIT 1";
+							$sql = sprintf($sql, $_POST['nombre_p']);
+							$res = mysql_qry($sql); // se inserta la data ejecutando la consulta sql
+							if(mysql_num_rows($res) == 1){
+								$fila = mysql_fetch_assoc($res);
+								//print_r($fila);
+					?>
+					<p>
+						<table>
+							<tr>
+								<td>Tipo</td>
+								<td>Marca</td>
+								<td>Descripcion</td>
+							</tr>
+							<tr>
+								<td>
+									<a href="modificar_pro.php?id=<?php echo $fila['id_producto'] ?>">
+										<?php echo $fila['nombre_p'] ?>
+									</a>
+								</td>
+								<td><?php echo $fila['precio_unitario'] ?></td>
+								<td><?php echo $fila['descripcion'] ?></td>
+							</tr>
+						</table>
+					</p>
+					<?php
+							}
+						}
+					?>
+					
+					
+					
+				</nav>
+			</section>
+			<?php echo (isset($info)) ? $info : ''; ?>
+		</article>
+		</br></br></br>
+		<li>
+			<?php require_once './fragmentos/pie_de_pagina.php'; ?>
+		</li>
+	</body>
+</html>

@@ -1,0 +1,80 @@
+<?php
+	include_once '../nucleo_php/coneccion.php';
+	include_once '../nucleo_php/funciones.php';
+	
+	if(isset($_POST['enviar'])){
+		$i = 0;
+		foreach($_POST as $campo => $contenido){
+			if(empty($contenido)){ $i++; }
+		}
+		if($i == 0){
+			$sql = "INSERT INTO entrada VALUES (NULL, 23, '%s', '%s', 23, '%s', %s, %s)";
+			$sql = sprintf($sql, $_POST['fecha_salida'],
+							 $_POST['observacion'],
+							 $_POST['fecha_registro'],
+							 $_POST['id_cliente'],
+							 $_POST['correlativo_factura']);
+			mysql_qry($sql);
+			$info = 'Registro Guardado';
+		}else{
+			$info = 'se enviaron campos vacios';
+		}
+	}
+?>
+
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta charset="utf-8"/>
+		<title>Sistema de Inventario</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1"/>
+		<link rel="shortcut icon" type="image/x-icon" href="../favicon2.ico"/>
+		<link rel="sitemap" type="aplication/xml" title="sitemap" href="sitemap.xml"/>
+		<link rel="stylesheet" href="./../css/flexslider.css"/>
+		<link rel="stylesheet" href="./../css/menu.css"/>
+		<link rel="stylesheet" style="text/css" href="../css/almacenprods.css" />
+		<script type="text/javascript" src="./../js/jquery.js"></script>
+		<script type="text/javascript" src="./../js/menu.js"></script>
+		<script type="text/javascript" src="./../js/jquery.min.js"></script>
+		<script type="text/javascript" src="./../js/jquery-ui-1.10.4.custom.min.js"></script>
+		<script src="./../js/jquery.flexslider.js"></script>
+		<script>
+			$(document).ready(function(){
+				$("a").button();
+				$(".flexslider").flexslider();
+			})
+		</script>
+	</head>
+	<body>
+		<?php include_once './fragmentos/menu_header.php'; ?>
+		</br></br></br></br>
+		<h1>SALIDA DE PRODUCTOS</h1>
+		</br></br>
+		<article>
+			<section id="colmo">
+				<nav>
+					<form action="" method="post" class="almaprods">
+						<article>
+							<p>Fecha de Salida (aaaa/mm/dd): </p>
+							<p>Fecha de Registro (aaaa/mm/dd): </p>
+							<p>Cliente: </p>
+							<p>Correlativo de Factura: </p>
+							<p>Observaci&oacute;n: </p>
+						</article>
+						<article>
+							<p><input type="text" name="fecha_salida" id="fecsal" /></p>
+							<p><input type="text" name="fecha_registro" id="fecreg" /></p>
+							<p><input type="text" name="id_cliente" id="cliente" /></p>
+							<p><input type="text" name="correlativo_factura" id="corfact" /></p>
+							<p><input type="text" name="observacion" id="obs" /></p>
+						</article>
+						<p><input type="submit" name="enviar" value="Enviar" /></p>
+					</form>
+				</nav>
+			</section>
+			<?php echo (isset($info)) ? $info : ''; ?>
+		</article>
+		</br></br></br>
+		<li><?php require_once './fragmentos/pie_de_pagina.php'; ?></li>
+	</body>
+</html>

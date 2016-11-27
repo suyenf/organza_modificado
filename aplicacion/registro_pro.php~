@@ -1,0 +1,145 @@
+<?php
+	include_once '../nucleo_php/coneccion.php';
+	include_once '../nucleo_php/funciones.php';
+	
+	if(isset($_POST['enviar'])){
+		$i = 0;
+		foreach($_POST as $campo => $contenido){ //repite por cada elemento dentro de un array
+			if(empty($contenido)){ //verifico por cada uno de los capos cual esta vacio
+				$i++;
+			}
+		}
+		if($i == 0){ //si no hay ninguno vacio guarda
+			//$sql = "INSERT INTO producto (NULL, '%s', %s, %s, '%s', %s, '%s', '%s', %s)";
+			$nomprod = $_POST['nombre_p'];
+			$punprod = $_POST['precio_unitario'];
+			$canprod = $_POST['cant_existencia'];
+			$desprod = $_POST['descripcion'];
+			$idpprod = $_POST['id_proveedor'];
+			$idmprod = $_POST['id_marca'];
+			$sttprod = $_POST['status'];
+			$finprod = $_POST['fecha_ingreso'];
+			
+			$sql = "INSERT INTO producto VALUES (NULL, '$nomprod', '$punprod', '$canprod', '$desprod', '$idpprod', '$idmprod', '$sttprod', '$finprod')";
+			
+			//echo $sql;
+			mysql_qry($sql); // se inserta la data ejecutando la consulta sql
+			$info = 'Registro Guardado';
+		}else{ //si no manda mensajitos de texto
+			$info = 'se enviaron campos vacios';
+		}
+	}
+	
+		$sql_nivel = "SELECT * FROM marca_producto WHERE status = 1";
+		$res_nivel = mysql_qry($sql_nivel);
+		
+		$sql_prov = "SELECT * FROM proveedor WHERE status = 1";
+		$res_prov = mysql_qry($sql_prov);
+	
+		$sql_stat = "SELECT * FROM estado";
+		$res_stat = mysql_qry($sql_stat);
+	
+	
+	
+	
+?>
+
+<!DOCTYPE html>
+<html lang="es">
+	<head>
+		<meta charset="utf-8"/>
+		<title>Sistema de Inventario</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1"/>
+		<link rel="shortcut icon" type="image/x-icon" href="../favicon2.ico"/>
+		<link rel="sitemap" type="aplication/xml" title="sitemap" href="sitemap.xml"/>
+		<link rel="stylesheet" href="./../css/flexslider.css"/>
+		<link rel="stylesheet" href="./../css/menu.css"/>
+		<script type="text/javascript" src="./../js/jquery.min.js"></script>
+		<script type="text/javascript" src="./../js/jquery-ui-1.10.4.custom.min.js"></script>
+		<script src="./../js/jquery.flexslider.js"></script>
+		<script>
+			$(document).ready(function(){
+				$("a").button();
+				$(".flexslider").flexslider();
+			})
+		</script>
+		<style type="text/css">
+			.modproducto article{
+				display: inline-block;
+			}
+			.modproducto article:first-child input{
+				font-weight: bold;
+				text-align: right;
+			}
+		</style>
+	</head>
+	<body>
+		<?php include_once './fragmentos/menu_header.php'; ?>
+		</br></br>
+		<section id="trabajos">
+			<div class="title"><h2>Modificar Producto</h2></div></br>
+			<form method="post" action="" class="modproducto">
+				<article>
+					<p><input type="text" value="Tipo de Producto: " readonly="readonly" /></p>
+					<p><input type="text" value="Precio Unitario: " readonly="readonly" /></p>
+					<p><input type="text" value="Cantidad: " readonly="readonly" /></p>
+					<p><input type="text" value="Descripci&oacute;n : " readonly="readonly" /></p>
+					<p><input type="text" value="Proveedor: " readonly="readonly" /></p>
+					<p><input type="text" value="Marca: " readonly="readonly" /></p>
+					<p><input type="text" value="Fecha de Ingreso: " readonly="readonly" /></p>
+					<p><input type="text" value="Estado: " readonly="readonly" /></p>
+				</article>
+				<article>
+					<p><input type="Text" name="nombre_p"></p>
+					<p><input type="Text" name="precio_unitario"></p>
+					<p><input type="Text" name="descripcion"></p>
+					<p><input type="Text" name="cant_existencia"></p>
+					<p>
+						<select name="id_proveedor">
+							<option value="">------------</option>
+							<?php
+								while($fila_prov = mysql_fetch_array($res_prov)){
+							?>
+									<option value="<?php echo $fila_prov['id_proveedor'] ?>">
+										<?php echo $fila_prov['razon_social'] ?>
+									</option>
+							<?php
+								}
+							?>
+						</select>
+					</p>
+					<p>
+						<select name="id_marca">
+							<option value="">------------</option>
+							<?php
+								while($fila_nivel = mysql_fetch_array($res_nivel)){
+							?>
+									<option value="<?php echo $fila_nivel['id_marca'] ?>">
+										<?php echo $fila_nivel['descripcion_marc'] ?>
+									</option>
+							<?php
+								}
+							?>
+						</select>
+					</p>
+					<p><input type="date" name="fecha_ingreso"></p>
+					<p><select name="status">
+							<option value="">------------</option>
+							<?php while($fila_stat= mysql_fetch_array($res_stat) ){ ?>
+							<option value="<?php echo $fila_stat['status'] ?>">
+								<?php echo $fila_stat['descripcion'] ?>
+							</option>	
+							<?php } ?>
+							</select></p>
+				</article>
+				<p><input type="submit" name="enviar" value="Guardar"></p>
+			</form>
+		</section>
+			<?php echo (isset($info)) ? $info : ''; ?>
+
+<body>
+
+		</br></br></br>
+		<li><?php require_once './fragmentos/pie_de_pagina.php'; ?></li>
+	</body>
+</html>

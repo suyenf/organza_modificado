@@ -1,0 +1,116 @@
+<?php
+include_once '../nucleo_php/coneccion.php';
+include_once '../nucleo_php/funciones.php';
+
+
+
+if (isset($_POST['enviar'])) {
+    $i = 0;
+    foreach ($_POST as $campo => $contenido) { //repite por cada elemento dentro de un array
+        if (empty($contenido)) { //verifico por cada uno de los capos cual esta vacio
+            $i++;
+        }
+    }
+    if ($i == 0) {//si no hay ninguno vacio guarda
+        $sql = "UPDATE producto SET nombre_p='%s', precio_unitario=%s, cant_existencia=%s, descripcion='%s', id_proveedor=%s, id_marca=%s, status='%s', fecha_ingreso=%s WHERE id_producto = %s";
+        $sql = sprintf($sql, $_POST['nombre'], $_POST['apellido'], $_POST['ci'], $_POST['direccion'],
+		$_POST['telefono'],$_GET['id']);
+		//nombre_c,apellido_c,ci,direccion,telefono)
+						   //VALUES ('$nombre','$apellido','$ci','$direccion','$telefono')
+
+
+        //echo $sql;
+
+        mysql_qry($sql); // se inserta la data ejecutando la consulta sql
+
+        $info = 'Registro Guardado';
+    } else { //si no manda mensajitos de texto
+        $info = 'se enviaron campos vacios';
+    }
+}
+//echo $_GET['id'];
+
+     $sql_a="SELECT * FROM cliente WHERE id_cliente= %s";
+	 $sql_a= sprintf($sql_a,$_GET['id']);
+	$resul= mysql_qry($sql_a);
+	$alumno= mysql_fetch_array($resul)/*selec los registros en un array por vez*/
+	//echo $alumno['ci'];	
+	
+	 //print_r($alumno);
+	// echo $alumno['ci'];
+	 
+?>
+<!DOCTYPE html>
+<html lang="es">
+ <meta charset="utf-8"/><!--ESTO ES UNIVERSAL-->
+        <title>Sistema de Inventario</title><!--NOMBRE QUE SE MUESTRA EN LA PESTANA DEL NAVEGADOR-->
+        <meta name="viewport" content="width=device-width,initial-scale=1"/><!--el viewport sirve para que el disp. este viendo la pag web como se le diga en el content...(la linea quiere decir que el ancho del contenido de este sitio se va a ver conforme sea el ancho del dispositivo, la escala inicial va a ser igual a 1)-->
+        <link rel="shortcut icon" type="image/x-icon" href="../favicon2.ico"/> <!--enlace para colocar el favicon.ICO-->
+        <link rel="sitemap" type="aplication/xml" title="sitemap" href="sitemap.xml"/>
+        <link rel="stylesheet" href="./../css/flexslider.css"/><!--enlazamos el slider-->
+        <link rel="stylesheet" href="./../css/menu.css"/><!--enlazamos el estilo del menu-->
+       <!-- <link rel="stylesheet" href="./../css/estilos.css"/> <!--enlace para el estilo de la pag-->
+
+
+        <!--LINKS PARA LOS JQUERYS QUE DESCARGUE -->
+        <script type="text/javascript" src="./../js/jquery.min.js"></script>					
+        <script type="text/javascript" src="./../js/jquery-ui-1.10.4.custom.min.js"></script>					
+        <!-- FIN DE LOS LINKS PARA LOS JQUERYS QUE DESCARGUE -->
+        <script src="./../js/jquery.flexslider.js"></script>
+        <script>
+
+            $(document).ready(function() {
+                $("a").button();
+                $(".flexslider").flexslider();
+            })
+
+        </script>
+    </head>
+    <!--TRABAJO DE MAQUETADO DE LA CABEZERA-->
+    <body>
+        <?php include_once './fragmentos/menu_header.php'; ?>
+
+
+        </br></br></br></br>				  				  
+		<section id="trabajos">
+		<h1>MODIFICAR CLIENTE</h1>
+        </br>
+        </br>
+        <article>
+            
+                <nav>
+
+                    <form method="post" action="">
+                        Nombre   : <input type="Text" name="nombre" value="<?php echo $alumno['nombre_c'];?>"><br><br>
+                        Apellido : <input type="Text" name="apellido" value="<?php echo $alumno['apellido_c'];?>"><br><br>
+                        C&eacute;dula : <input type="Text" name="ci" value="<?php echo $alumno['ci'];?>"><br><br>
+                        Direcci&oacute;n : <input type="Text" name="direccion" value="<?php echo $alumno['direccion'];?>"><br><br>
+                        Tel&eacute;fono: <input type="Text" name="telefono" value="<?php echo $alumno['telefono'];?>"><br><br><br>
+                        <input type="Submit" name="enviar" value="Guardar">
+                        <!--
+                        
+                        aprovecho el boton para ver si se esta enviando algo
+                        name == enviar
+                        
+                        -->
+                    </form>
+                </nav>
+
+            </section>	
+                <?php echo (isset($info)) ? $info : ''; ?>
+
+        </article>
+
+
+
+        </br>
+        </br>
+        </br>
+        <ul>
+            <li></li>
+        </ul>
+		
+	<footer>
+		<?php require_once './fragmentos/pie_de_pagina.php'; ?>
+	</footer>			
+</html>

@@ -1,0 +1,215 @@
+/*reset universal*/
+*{
+    border:0; /*el modelo de caja mandamela a cero*/
+	margin:0;
+	padding:0;
+}
+/*todas la estructuras que trabajamos con semantica se dira que su naturaleza es en bloques */
+article,figcaption,figure,footer,header,hgroup,nav,section{
+	display: block;
+}
+/*estilos del sitio*/
+/*ESTILOS DE LAS LETRAS*/
+@font-face {
+    font-family: "Chalet";
+    src: url("../fonts/Chalet.eot");
+    src: url("../fonts/Chalet.eot?#iefix") format("embedded-opentype");
+    src: url("../fonts/Chalet.woff") format("woff");
+    src: url("../fonts/Chalet.ttf") format("truetype");
+    /*src: url("../fonts/Chalet.svg#Chalet") format("svg");*/
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: "Pecita";
+	src: url("../fonts/Pecita.eot");
+    src: url("../fonts/Pecita.eot?#iefix") format("embedded-opentype");
+    src: url("../fonts/Pecita.woff") format("woff");
+    src: url("../fonts/Pecita.ttf") format("truetype");
+	/*src: url("../fonts/Pecita.svg#Pecita") format("svg");*/
+	font-weight: normal;
+    font-style:normal;
+}
+/*FIN ESTILOS DE LAS LETRAS*/
+/*ESTILOS DEL CUERPO, FONDO BLANCO*/
+body{
+	background: #212121 url(../img/fondo.jpg);
+	color: #FFF;
+	font-family: "Chalet",Helvetica, Verdana;
+	font-size: 1em;
+	
+}
+/* FIN ESTILOS DEL CUERPO, FONDO BLANCO*/
+/*ESTILOS DE LA POSICION DE LAS LETRAS DEL MENU*/
+a{
+	color:#57ABB8;
+	font-weight: bold;
+	text-decoration: none;/*quita la raya que aparece en los enlaces que se van a ver */
+}
+	
+a:hover{ /*trabaja todos los enlaces sobre el hober, este se usa cuando pasamos el mouse sobre la letra y cambia el color*/
+	color:#F60;
+}
+figcaption{ /*AHRITA NO TENEMOS figcaption en el html pero luego se pondra*/
+	font-size:0.85em;
+	padding: 0.25em;
+	text-align: center;
+}
+img,video{/*estilo para hacer las imagenes y videos flexibles... colocando todo en el centro y dentro de otra imagen de fondo*/
+	max-width: 100%;
+	
+}
+header, section#contenido, footer {/*coloca todo en el centro y dentro de otra imagen de fondo*/
+	background: #FFF url(../img/fondo-interno.jpg);
+	margin: 0 auto;
+	max-width: 90%;
+	text-align: center;
+}
+header h1,nav{ /* se les dara estilos a h1 y al nav */
+	display: inline-block;
+	max-width: 100%;
+	vertical-align: middle;/*a la mitad del objeto de donde se comparte el ancho*/
+}
+/*estilos a la navegacion */
+
+nav ul{ 
+	list-style: none; /* si le pone el none se van a quitar unas biñetas */
+	
+}
+nav li{
+	display: inline-block;
+	padding: 0.1em;
+	vertical-align: top;
+}
+/*FIN DE ESTILOS DE LA POSICION DE LAS LETRAS DEL MENU*/
+
+/*A TRABAJA LOS ENLACES QUE ESTAN DETRO DEL NAV*/
+
+nav a{ /*ESTO ES PARA DARLE FORMA A LAS LETRAS DEL MENU DE NAVEGACION*/
+	background: #FFF;
+	border: 0.1em solid #57ABB8;
+	border-radius: 0.25em;
+	color: #F60;
+	display: block;
+	font-family: "Pecita", Helvetica, Verdana;
+	font-size: 1.4em;
+	padding: 0.2em;
+	transition: all 0.5s ease-in; /*atributo:transicion: puede ser de color, en el eje Y y de forma.. el tiempo y el tipo de trans.. */
+}
+
+nav a:hover{ /**/
+	background: #212121;
+	border: 0.1em dashed #F60;/*DASHED ES DISCONTINUO EL TRAZADO*/
+	border-radius: 0 0.5em 0 0.5em; /*ESTO SE USA ASI PARA NO USAR EL MARGIN NI PADIGN: BORDE IZQDO SUPERIOR,BORDE DERECHA SUPERIOR,BORDE DERECHA INFERIOR,BORDE IZQDO INFERIOR*/
+	color: #FFF;
+	transition: all 0.5s ease-out;
+}
+/* FIN PARA DARLE FORMA A LAS LETRAS DEL MENU DE NAVEGACION*/
+
+/* ESTILO PARA LOS QUE COMPARTEN ESPACIOS*/
+section#principal, aside{
+	background: #1E6381;
+	border-radius: 0.5em;
+	display: inline-block;
+	margin: 0 auto;
+	max-width: 100%;
+	padding: 0.25em;
+	vertical-align: top;
+	width: 65%;
+}
+article#galeria-inicio{
+	border-radius: 0.5em;
+	margin: 0.5em;
+	padding: 0.5em;
+	text-align: left;
+	width: 95%;
+}
+aside{
+	width: 30%;
+}
+
+aside img{
+	border-radius: 0.25em;
+}
+
+footer{
+	color: #000;
+	font-size: 0.85em;
+	padding: 0.75em 0;
+}
+/*EN EL HTML se realizo una clase llamada fade donde esta el logo, 
+ahora se le realizara estilos a esta */
+.fade{
+	opacity: 1; /*opasidad, su rango es de 0 a 1 */
+	filter: alpha(opacity=10); /*es para que el IE reconozca el opacity,
+	con escala de 0 a 10 */
+	transition: all 0.5s ease-in;
+}
+
+.fade:hover{
+	opacity: 0.7; /*opasidad, su rango es de 0 a 1 */
+	filter: alpha(opacity=7); /*es para que el IE reconozca el opacity,
+	con escala de 0 a 10, osea que va a bajar un 70%*/
+	transition: all 0.5s ease-out;
+}
+/* FIN ESTILO PARA LOS QUE COMPARTEN ESPACIOS*/
+
+/*Elementos del responsive web desing:
+1° Tener una grilla sencible, una cuadricula sencible
+2° Tener imagenes y objetos  Flexibles
+3° Tener Medias Querys, Una media-query es como si se tubiera un condicional de programación, osea un IF dentro del CSS, 
+es decir los estilos que esten dentro del media-query se van a cumplir siempre y cuando se llegue a la condicion o estilo que esta dentro del media, 
+estas sirven para trabar sobre el ancho de la pagina. Con la media-query le da mas presentacion a la pagina  */
+
+/*DECLARACION DE MEDIA-QUERY*/
+@media(min-width:1081px){ /*Cuando la ventana rebase el 1081px(de 1081px hacia arriba) para arriba, aplicar esto,osea envia el logo a la izda y los botones a la derecha*/
+	header h1{
+		text-align: left;
+		width: 35%;
+	}
+	
+	nav{
+		text-align: right;
+		width: 60%;
+	}
+}
+/*Cuando el alto maximo sea de 1080px(osea de 1080 hacia abajo)la letra del menu disminuye como tambien el tamaño del aside*/
+
+@media(max-width: 1080px){
+	nav li{
+		font-size: 1.3em;
+	}
+	article#galeria-inicio{
+		width: 90%;
+	}
+	aside{
+		width: 20%;
+	}
+}
+/*Cuando el ancho maximo sea de 800px(osea de 800 hacia abajo)la lista de navegacion baja al igual que el article*/
+@media(max-width: 800px){
+	nav li{
+		font-size: 0.95em;
+	}
+	article#galeria-inicio{
+		width: 88%;
+	}
+}
+/*Cuando el ancho maximo sea de 600px(osea de 600 hacia abajo)la navegacion sera en linea y en bloque al igual que el section y el aside*/
+@media(max-width:600px){
+	nav li{
+		display: inline-block;
+		margin: 0px;
+		width: 98%;
+	}
+	section#principal{
+		margin-bottom: 0.2em;/* es para tener separacion de los contenidos*/
+	}
+	section#principal, aside{
+		display: block;
+		width: 95%;
+	}
+}
+/*FIN DE DECLARACION DE MEDIA-QUERY*/

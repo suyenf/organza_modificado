@@ -1,0 +1,95 @@
+<header>
+	<!DOCTYPE HTML>
+	<html>
+		<head>
+			<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+			<link type="text/css" href="./../css/menu.css" rel="stylesheet" />
+			<script type="text/javascript" src="jquery.js"></script>
+			<script type="text/javascript" src="menu.js"></script>
+		</head>
+		<body>
+			<div id="menu">
+				<ul class="menu">
+					<a href="cliente.php">Inicio</a>
+					<li>
+						<a href="#" class="parent">Clientes</a>
+						<div>
+							<ul>
+								<li><a href="registro_c.php">Registro de Cliente</a></li>
+								<li><a href="buscar_c.php">Buscar Cliente</a></li>
+							</ul>
+						</div>
+					</li>
+					<li>
+						<a href="#" class="parent">Proveedores</a><br />
+						<div>
+							<ul>
+								<li><a href="registro_p.php">Reg. Proveedor</a></li>
+								<li><a href="buscar_p.php">Buscar Proveedor</a></li>
+							</ul>
+						</div>
+					</li>
+					<li>
+						<a href="#" class="parent">Productos</a>
+						<div>
+							<ul>
+								<li><a href="registro_pro.php">Reg. Productos</a></li>
+								<li><a href="buscar_a_pro.php">Buscar Productos</a></li>
+							</ul>
+						</div>
+					</li>
+					<li>
+						<a href="#" class="parent">Almacén</a>
+						<div>
+							<ul>
+								<li><a href="almaproin.php">Entrada de Producto</a></li>
+								<li><a href="almaproout.php">Salida de Producto</a></li>
+							</ul>
+						</div>
+					</li>
+					<li>
+						<a href="#" class="parent">Reportes</a>
+						<div>
+							<ul>
+								<li><a href="pdfcliente_1.php"><span>Por Cliente</span></a></li>
+								<li><a href="reporte_excel_usuarios.php"><span>Por Proveedor</span></a></li>
+								<li><a href="reporte_excel_cliente.php"><span>Por Producto</span></a></li>
+								<li><a href="reporte_excel_usuarios.php"><span>Por  Usuario</span></a></li>
+							</ul>
+						</div>
+					</li>
+					<li>
+						<a href="#" class="parent">Configuraci&oacute;n</a>
+						<div>
+							<ul>
+								<li>
+									<a href="#" class="parent">Usuario</a>
+									<div>
+										<ul>
+											<li><a href="registro_us.php">Registrar Usuario</a></li>
+											<li><a href="buscar_us.php">Consultar Usuario</a></li>
+										</ul>
+									</div>
+								</li>
+								<!--<li>
+									<a href="#" class="parent">Empleado</a>
+									<div>
+										<ul>
+											<li><a href="registro_e.php">Registrar Empleado</a></li>
+											<li><a href="registro_e.php">Consultar Empleado</a></li>
+										</ul>
+									</div>
+								</li>-->
+								<li><a href="respaldos.php" class>Respaldos</a></li>
+							</ul>
+						</div>
+					</li>
+					<li><a href="#" class="parent">Ayuda</a></li>
+					<li><a href="?logout" class="parent">Salir</a></li>
+					<!--<li><a>Ayuda</a></li>
+					<li><a href="?logout">Salir</a></li>-->
+				</ul>
+			</div>
+		</body>
+	</html>
+</header>

@@ -1,0 +1,560 @@
+/**
+ *********************************************
+ * Prototype of styles for horizontal CSS-menu
+ * @data 30.06.2009
+ *********************************************
+ * (X)HTML-scheme:
+ *  <div id="menu">
+ *      <ul class="menu">
+ *          <li><a href="#" class="parent"><span>level 1</span></a>
+ *              <ul>
+ *                  <li><a href="#" class="parent"><span>level 2</span></a>
+ *                      <ul><li><a href="#"><span>level 3</span></a></li></ul>
+ *                  </li>
+ *              </ul>
+ *          </li>
+ *          <li class="last"><a href="#"><span>level 1</span></a></li>
+ *      </ul>
+ *  </div>
+ *********************************************
+ */
+
+/* menu::base */
+body{
+	background: #212121 url(../img/INICIO_21.png)no-repeat center center fixed;
+	
+	color: #000040;
+	font-family: Helvetica, Verdana;
+	font-size: 1em;
+		/*expancion de img*/
+	     background-size: cover;
+        -moz-background-size: cover;
+        -webkit-background-size: cover;
+        -o-background-size: cover;
+	/**/
+	
+	
+}
+div#img{
+background:url(../img/mis_vis.png)no-repeat center center fixed;
+
+
+
+
+}
+div#menu {
+    height: 88px;
+    padding-left: 24px;
+    background: url(../img/left.png) no-repeat;
+    _background-image: url(../img/ie-left.png);
+    width:900px;
+}
+
+div#menu ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    float: left;
+}
+div#menu ul.menu {
+    padding-right: 69px;
+    background: url(../img/right.png) no-repeat right 0;
+    _background-image: url(../img/ie-right.png);
+}
+
+div#menu li {
+    position: relative;
+    margin: 0;
+    padding: 0 12px 0 0;
+    display: block;
+    float: left;
+    z-index: 9;
+    width: 104px;
+	list-style: none; /* si le pone el none se van a quitar unas biñetas */
+}
+div#menu ul ul li {
+    z-index: 9;
+}
+div#menu li div {
+    list-style: none;
+    float: left;
+    position: absolute;
+    z-index: 11;
+    top: 83px;
+    left: 0;
+    visibility: hidden;
+    width: 194px;
+    padding: 0 0 16px 0;
+    background: url(../img/submenu-bottom.png) no-repeat 15px bottom;
+    margin: 1px 0 0 0;
+	
+}
+div#menu li:hover>div {
+    visibility: visible;
+	list-style: none; /* si le pone el none se van a quitar unas biñetas */
+
+}
+
+div#menu a {
+    position: relative;
+    z-index: 10;
+    height: 41px;
+    display: block;
+    float: left;
+    line-height: 41px;
+    text-decoration: none;
+    margin-top: 1px;
+    white-space: pre-line;
+    width: 118px;
+    padding-right:5px;
+    text-align:center;
+	list-style: none; /* si le pone el none se van a quitar unas biñetas */
+
+}
+div#menu span {
+    display: block;
+    cursor: pointer;
+    background-repeat: no-repeat;
+    background-position: 95% 0;
+    text-align: center;
+}
+
+/* menu::level1 */
+div#menu a {
+    padding: 0 0 0 0;
+    line-height: 75px;
+    height: 88px;
+    margin-right: 11px;
+    _margin-right: 1px;
+    text-transform: uppercase;
+    background: none;
+}
+div#menu span {
+    margin-top: 5px;
+    padding-left: 10px;
+    color: #244848;
+    font: normal 14px 'Trebucher MS', Helvetica, Arial, sans-serif;
+    font-weight: bold;
+    background: none;
+    line-height: 75px;
+}
+div#menu a:hover {
+    background: url(../img/selected-right.png) no-repeat right 23px;
+}
+div#menu a:hover span {
+    background: url(../img/selected-left.png) no-repeat 0 28px;
+}
+div#menu li.current a,
+div#menu ul.menu>li:hover>a {
+	list-style: none; /* si le pone el none se van a quitar unas biñetas */
+    background: url(../img/selected-right.png) no-repeat right 23px;
+}
+div#menu li.current a span,
+div#menu ul.menu>li:hover>a span {
+    list-style: none; /* si le pone el none se van a quitar unas biñetas */
+	background: url(../img/selected-left.png) no-repeat 0 18px;
+}
+div#menu li {  }
+div#menu li.last { background: none; }
+
+/* menu::level2 */
+div#menu ul ul li {
+	list-style: none; /* si le pone el none se van a quitar unas biñetas */
+    background: none;
+    padding: 0;
+}
+div#menu ul ul {/*SUB MENU DENTRO DE OTRO SUB MENU*/
+    padding-top: 10px;
+    width: 194px;
+    background: url(../img/submenu-top.png) no-repeat;
+    background-image: url(../img/ie-submenu-top.gif);
+}
+div#menu ul ul a {
+    padding: 0;
+    height: auto;
+    float: none;
+    display: block;
+    line-height: 26px;
+    font-size: 18px;
+    color: #fff;
+    z-index: -1;
+    padding-left: 5px;
+    white-space: normal;
+    width: 152px;
+    margin-left: 18px;
+    text-transform: none;
+}
+div#menu ul ul a span {
+    line-height: 26px;
+    font-size: 12px;
+}
+div#menu li.current ul a,
+div#menu li.current ul a span {
+    background:none;
+	list-style: none; /* si le pone el none se van a quitar unas biñetas */
+}
+div#menu ul ul a:hover {
+    background: url(../img/submenu-selected-bottom.png) no-repeat 2px bottom;
+}
+div#menu ul ul a:hover span {
+    background: url(../img/submenu-selected-top.png) no-repeat 0 0;
+}
+div#menu ul ul a.parent {
+    background: url(../img/submenu-pointer-bottom.gif) no-repeat 2px bottom;
+}
+div#menu ul ul a.parent span {
+    background: url(../img/submenu-pointer-top.png) no-repeat 0 0;
+}
+div#menu ul ul a.parent:hover {
+    background: url(../img/submenu-pointer-selected-bottom.png) no-repeat 2px bottom;
+}
+div#menu ul ul a.parent:hover span {
+    background: url(../img/submenu-selected-top.png) no-repeat 0 0;
+}
+div#menu ul ul span {
+    margin-top: 0;
+    text-align: left;
+}
+div#menu ul ul li.last { background: none; }
+div#menu ul ul li {
+    width: 100%;
+	list-style: none; /* si le pone el none se van a quitar unas biñetas */
+}
+
+/* menu::level3 */
+div#menu ul ul div {
+    padding-top: 20px;
+    margin: -92px 0 0 157px !important;
+    margin-left: 160px;
+    background: url(../img/subsubmenu-top.png) no-repeat 15px 0;
+}
+div#menu ul ul ul {
+    padding-top: 0;
+    background: url(../img/submenu-bottom.png) no-repeat 15px bottom;
+}
+div#menu ul ul div li {
+    position:relative;
+    top:-10px;
+}
+
+/* lava lamp */
+div#menu li.back {
+    background: url(../img/selected-left.png) no-repeat 0 0;
+    width: 10px;
+    height: 39px;
+    z-index: 8;
+    position: absolute;
+    padding: 0;
+    margin: 24px 0 0 0;
+	list-style: none; /* si le pone el none se van a quitar unas biñetas */
+}
+div#menu li.back .left {
+    padding:0;
+    width:1094px;
+    background: url(../img/selected-right.png) no-repeat ;
+    height: 39px;
+    margin: 0 0 0 14px;
+    float: none;
+    position: relative;
+    top: 0;
+    left: 0;
+    visibility: visible;
+	list-style: none; /* si le pone el none se van a quitar unas biñetas */
+}
+
+* { margin:0;
+    padding:0;
+}
+/*body { background:#171717; }*/
+div#menu {
+    margin:30px auto;
+    width:80%;
+}
+div#copyright {
+    margin:0 auto;
+    width:80%;
+    font:11px 'Trebuchet MS';
+    color:#fff;
+    text-indent:20px;
+    padding:40px 0 0 0;
+}
+div#copyright a { color:#00bfff; }
+div#copyright a:hover { color:#0c1d3d; }
+
+div#usual{
+	position: absolute;
+	left: 10px;
+	top: 10px;
+}
+
+h1{
+    background-image: url(../img/LOGO_EDITABLE.png) right 0;
+	padding:0;
+    width:1094px;
+    height: 39px;
+    margin: 0 0 0 14px;
+    float: none;
+    position: relative;
+    top: 0;
+    left: 0;
+    visibility: visible;
+	list-style: none;
+
+}
+li{
+	list-style: none; /* si le pone el none se van a quitar unas biñetas */}
+/*CAJAS DE TEXTOS*/
+
+
+
+
+	
+section#fastido{
+	border-radius: .5em;
+	border: 2px solid #4196bb; 
+	box-shadow: 5px 0px 0px 1px #1D98F3; 
+	margin: 0;
+	padding: .39em;
+	text-align: center;
+    max-width:70%;/*max de ancho del texto*/
+	text-align:center;
+	position: absolute;
+	top: 584px ;/*80 píxeles desde la parte superior de la ventana */
+	right: 16px;/* 100 píxeles desde la izquierda*/
+	 box-shadow: 5px 5px 10px rgba(0,0,0,0.5);
+	}
+	
+	
+	
+section#yo{
+	border-radius: .5em;
+	border: 2px solid #4196bb; 
+	box-shadow: 5px 0px 0px 1px #1D98F3; 
+	margin: 0;
+	padding: .39em;
+	text-align: center;
+	font-weight: bold;
+    max-width:70%;/*max de ancho del texto*/
+	text-align:center;
+	position: absolute;
+	top: 550px ;/*80 píxeles desde la parte superior de la ventana */
+	right: 16px;/* 100 píxeles desde la izquierda*/
+	 box-shadow: 5px 5px 10px rgba(0,0,0,0.5);
+}
+section#queno{
+	border-radius: .5em;
+	border: 2px solid #4196bb; 
+	box-shadow: 5px 0px 0px 1px #1D98F3; 
+	margin: 550;
+	padding: .39em;
+	text-align: center;
+	font-weight: bold;
+    max-width:70%;/*max de ancho del texto*/
+	text-align:center;
+	position: absolute;
+	top: 590px ;/*80 píxeles desde la parte superior de la ventana */
+	right: 16px;/* 100 píxeles desde la izquierda*/
+	 box-shadow: 5px 5px 10px rgba(0,0,0,0.5);
+}
+
+section#c{
+	  	background: url(../img/slide-2.png)no-repeat ;/*FONDO DE PANTALLA MODALS*/
+	/*expancion de img*/
+	     background-size: cover;
+        -moz-background-size: cover;
+        -webkit-background-size: cover;
+        -o-background-size: cover;
+		/**/
+	  }
+
+a.boton { 
+padding: 5px 20px 6px 40px; 
+font-family: Helvetica, Verdana; 
+font-size: 16px; 
+font-weight: bold; 
+text-decoration: none; 
+background:url(../img/inicio.png);
+background-repeat: no-repeat; 
+border-radius: 15px; 
+visibility: visible;
+list-style: none; 
+position: absolute;
+	top: 152px ;/*80 píxeles desde la parte superior de la ventana */
+	right: 96px;/* 100 píxeles desde la izquierda*/
+
+} 
+
+
+a.boton1 { 
+padding: 5px 20px 6px 40px; 
+font-family: Helvetica, Verdana; 
+font-size: 16px; 
+font-weight: bold; 
+text-decoration: none; 
+background:url(../img/salir-de-gnome-icono-8179-32.png);
+background-repeat: no-repeat; 
+border-radius: 15px; 
+visibility: visible;
+list-style: none; 
+position: absolute;
+	top: 152px ;/*80 píxeles desde la parte superior de la ventana */
+	right: 4px;/* 100 píxeles desde la izquierda*/
+
+} 
+
+a.boton2 { 
+padding: 5px 20px 6px 40px; 
+font-family: Helvetica, Verdana; 
+font-size: 16px; 
+font-weight: bold; 
+text-decoration: none; 
+background:url(../img/ayuda2.png);
+background-repeat: no-repeat; 
+border-radius: 15px; 
+visibility: visible;
+list-style: none; 
+position: absolute;
+	top: 152px ;/*80 píxeles desde la parte superior de la ventana */
+	right:200px;/* 100 píxeles desde la izquierda*/
+
+} 
+a.boton2:hover { 
+font-style: Helvetica, Verdana;  
+box-shadow: 5px 0px 0px 1px #1D98F3; 
+}
+
+a.boton:hover { 
+font-style: Helvetica, Verdana;  
+box-shadow: 5px 0px 0px 1px #1D98F3; 
+}
+a.boton1:hover { 
+font-style: Helvetica, Verdana;  
+box-shadow: 5px 0px 0px 1px #1D98F3; 
+}
+
+/*FIN DE CAJAS DE TEXTOS*/
+footer{
+
+	max-width:35%;/*max de ancho del texto*/
+	text-align:right;
+	text-color: #006393;
+	text-shadow: 5px 5px 10px rgba(0,0,0,19);
+    font-weight: bold;
+	position: absolute;
+	top: 597px ;/*80 píxeles desde la parte superior de la ventana */
+	right: 20px;/* 100 píxeles desde la izquierda*/
+    
+}
+
+h1{
+	font-size:20px;
+    text-align: center;
+	text-color: #70D9DE;
+	list-style: none;
+	float:right;
+	position: absolute;/*POSICION DE LA IMAGEN*/
+	top:124px; /*SE MUEVE DE ABAJO HACIA ARRIBA*/
+	left: 610px/*SE MUEVE DE IZQDA A DERECHA*/
+}
+
+table{
+font-size:20px;
+    text-align: center;
+	text-color: #70D9DE;
+	list-style: none;
+	float:right;
+	position: absolute;/*POSICION DE LA IMAGEN*/
+	top:484px; /*SE MUEVE DE ABAJO HACIA ARRIBA*/
+	left: 570px/*SE MUEVE DE IZQDA A DERECHA*/
+
+
+}
+/*ACORDEON*/
+		*{ 	font-family: Helvetica, Verdana; margin: 0;}
+		dl{ 
+		
+		border-radius: .123em;
+		margin: 80px;
+		width: 700px;
+		}
+		dt, dd{ 
+		padding: 10px; 
+		}
+		dt{
+		border-radius: 3px;
+		background: #0080C0; 
+		color: #464646;
+		border-bottom: 1px solid #141414; 
+		border-top: 10px solid #1D98F3; 
+		cursor: pointer; 
+		}
+		dd{ 
+		background: #F5F5F5;
+		line-height: 1.6em;
+		}
+		dt.activo, dt:hover{ 
+		background: #80C6F9;
+		}
+
+		dt:before{ 
+		content: "▸";
+		margin-right: 10px; 
+		}
+		dt.activo:before{ 
+		content: "▾"; 
+		}
+
+#button:hover { 
+
+font-style: Helvetica, Verdana;  
+shadow: 5px 0px 0px 1px #606060; 
+cursor:pointer;
+
+  }
+  
+
+ /*COLORES DE LOS REQUIREDS*/
+input:invalid {
+border: 1px solid red;
+}
+/* Estilo por defecto */
+input:valid {
+border: 1px solid green;
+}
+
+/* Estilo por defecto */
+input:required:invalid {
+border: 1px solid red;
+}
+input:required:valid {
+border: 1px solid green;
+}
+
+/* Estilo por defecto */
+textarea:required:invalid {
+border: 1px solid red;
+}
+textarea:required:valid {
+border: 1px solid green;
+}
+
+
+	section#sun{
+	font-weight: bold;
+}
+
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		

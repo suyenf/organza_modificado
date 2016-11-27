@@ -1,0 +1,286 @@
+@font-face {
+  font-family: "Black Ops One";
+  font-style: normal;
+  font-weight: 400;
+  src: local("Black Ops One"), 
+       local("BlackOpsOne-Regular"), 
+	   url(http://fonts.gstatic.com/s/blackopsone/v6/2XW-DmDsGbDLE372KrMW1TxObtw73-qQgbr7Be51v5c.woff2) format('woff2'), 
+	   url(http://fonts.gstatic.com/s/blackopsone/v6/2XW-DmDsGbDLE372KrMW1fn8qdNnd5eCmWXua5W-n7c.woff) format('woff');
+}
+
+body{
+font-family: "Black Ops One", Arial black,sans-serif;
+text-align:center;
+color:#EEEEEE;
+}
+
+
+ #button{
+ text-decoration:none; 
+ text-align:center; 
+ padding:11px 32px; 
+ border:solid 1px #004F72; 
+ -webkit-border-radius:4px;
+ -moz-border-radius:4px; 
+ border-radius: 4px; 
+ font:13px Arial, Helvetica, sans-serif; 
+ font-weight:bold; 
+ color:#E5FFFF; 
+ background-color:#3BA4C7; 
+ background-image: -moz-linear-gradient(top, #3BA4C7 0%, #1982A5 100%); 
+ background-image: -webkit-linear-gradient(top, #3BA4C7 0%, #1982A5 100%); 
+ background-image: -o-linear-gradient(top, #3BA4C7 0%, #1982A5 100%); 
+ background-image: -ms-linear-gradient(top, #3BA4C7 0% ,#1982A5 100%); 
+ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1982A5', endColorstr='#1982A5',GradientType=0 ); 
+ background-image: linear-gradient(top, #3BA4C7 0% ,#1982A5 100%);   
+ -webkit-box-shadow:0px 0px 2px #bababa, inset 0px 0px 1px #ffffff; 
+ -moz-box-shadow: 0px 0px 2px #bababa,  inset 0px 0px 1px #ffffff;  
+ box-shadow:0px 0px 2px #bababa, inset 0px 0px 1px #ffffff;  
+  
+  }
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+.center{
+	position:absolute;
+	width:700px;
+	height:600px;
+	top:50%;
+	left:50%;
+	margin-left:-350px;
+	margin-top:-250px;	
+}
+
+div {
+   margin: 0.4em 0;
+}
+
+#inicio{
+margin: 0.5em auto;
+padding: 0.25em;
+text-align: center;
+
+}
+
+h1{
+	font-size:20px;
+    text-align: center;
+	text-color: #70D9DE;
+}
+
+input {
+     
+    font-family:  Arial black;
+   text-align:left;
+   vertical-align: baseline;
+   width: 45%;/*ancho*/
+   float:left;
+   left: 75%;
+	height:30px;/*largo*/
+  /*sombra*/
+  -webkit-box-shadow: inset 10px 10px 34px -4px rgba(0,0,0,0.75);
+-moz-box-shadow: inset 10px 10px 34px -4px rgba(0,0,0,0.75);
+box-shadow: inset 10px 10px 34px -4px rgba(0,0,0,0.75);
+/*bordes*/
+border-radius: 23px 23px 23px 23px;
+-moz-border-radius: 23px 23px 23px 23px;
+-webkit-border-radius: 23px 23px 23px 23px;
+border: 0px solid #000000;
+	
+	
+}
+label {
+   font-family:  Arial black;
+   width: 25%;
+   float: left;
+   
+}
+
+.modalmask {
+	position: fixed;
+	font-family: Arial, sans-serif;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	background: rgba(0,0,0,0.8);
+	z-index: 99999;
+	opacity:0;
+	-webkit-transition: opacity 400ms ease-in;
+	-moz-transition: opacity 400ms ease-in;
+	transition: opacity 400ms ease-in;
+	pointer-events: none;
+}
+.modalmask:target {
+	opacity:1;
+	pointer-events: auto;
+}
+.modalbox{
+	width: 400px;
+	position: relative;
+	padding: 3px 0px 0px 20px;/*largo interior,ancho interior,largo exterior,ancho exterior*/
+	
+	-webkit-transition: all 500ms ease-in;
+	-moz-transition: all 500ms ease-in;
+	transition: all 500ms ease-in;
+	/*SOMBRA*/
+-webkit-box-shadow: -4px 10px 42px 5px rgba(163,41,163,1);
+-moz-box-shadow: -4px 10px 42px 5px rgba(163,41,163,1);
+box-shadow: -4px 10px 42px 5px rgba(163,41,163,1);
+/*DEGRADADO*/
+background: -moz-radial-gradient(center, ellipse cover, rgba(50,144,227,1) 0%, rgba(4,2,84,1) 100%);
+background: -webkit-gradient(radial, center center, 0px, center center, 100%, , color-stop(0%, rgba(50,144,227,1)), color-stop(100%, rgba(4,2,84,1)));
+background: -webkit-radial-gradient(center, ellipse cover, rgba(50,144,227,1) 0%, rgba(4,2,84,1) 100%);
+background: -o-radial-gradient(center, ellipse cover, rgba(50,144,227,1) 0%, rgba(4,2,84,1) 100%);
+background: -ms-radial-gradient(center, ellipse cover, rgba(50,144,227,1) 0%, rgba(4,2,84,1) 100%);
+background: radial-gradient(ellipse at center, rgba(50,144,227,1) 0%, rgba(4,2,84,1) 100%);
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#3290e3', endColorstr='#040254', GradientType=1 );
+
+/*BORDEADO*/
+border-radius: 107px 8px 87px 87px;
+-moz-border-radius: 107px 8px 87px 87px;
+-webkit-border-radius: 107px 8px 87px 87px;
+border: 3px ridge #6b086b;
+
+
+}
+	
+
+.movedown {
+	margin: 0 auto;
+}
+
+.resize {
+	margin: 10% auto;
+	width:0;
+	height:0;
+
+}
+.modalmask:target .movedown{		
+	margin:10% auto;
+}
+.modalmask:target .rotate{		
+	transform: rotate(360deg) scale(1,1);
+    -webkit-transform: rotate(360deg) scale(1,1);
+}
+
+.modalmask:target .resize{
+	width:400px;
+	height:200px;
+}
+
+
+
+.close {
+    
+	background: #0080C0;
+
+	line-height: 25px;
+	position: absolute;
+	right: -20px;
+	text-align: center;
+	top: -11px;
+	width: 24px;
+	text-decoration: none;
+	font-weight:   above;
+	border-radius:8px;
+	font-size:16px;
+	
+	/*BORDEADO*/
+/*border-radius: 107px 8px 87px 87px;
+-moz-border-radius: 107px 8px 87px 87px;
+-webkit-border-radius: 107px 8px 87px 87px;
+border: 7px ridge #6b086b;*/
+	
+}
+
+.close:hover { 
+	background: #D8B1E4; 
+	color:#FF80C0;
+		/*SOMBRA*/
+-webkit-box-shadow: -4px 10px 42px 5px rgba(163,41,163,1);
+-moz-box-shadow: -4px 10px 42px 5px rgba(163,41,163,1);
+box-shadow: -4px 10px 42px 5px rgba(163,41,163,1);
+	
+	
+	
+}
+
+section{
+	border-radius: 0.5em;
+	text-align: center;
+	width: 100%;
+}
+section#principal{
+	
+	vertical-align: bottom;
+	width: 499px;
+	
+}
+
+
+
+ul{
+	width:500px;
+	margin:20% auto;
+	list-style:none;
+}
+ul li{
+
+	float:left;
+	margin-right:35px;
+
+}
+ul li a{
+	font-family: Arial, sans-serif;
+	font-size:16px;
+	text-decoration:none;
+	background:#222;
+	padding:20px;
+	color:#fff;
+	font-weight:bold;
+	border-radius:3px;
+	-webkit-transition: all 200ms ease-in;
+	-moz-transition: all 200ms ease-in;
+	transition: all 200ms ease-in;
+}
+ul li a:hover{
+	background:#FCFCFC;
+	color:#222;
+
+}
+
+a{
+	text-decoration:none;
+	text-align: center;
+	font-family: 'Black Ops One', cursive;
+	font-size:25px;
+	color:# 222;
+	
+
+}
+a:hover{
+
+	color:#DF7401;
+	
+}
+.nsc{
+	position:absolute;
+	bottom:40%;
+	right:0;
+}

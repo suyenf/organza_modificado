@@ -1,0 +1,1 @@
+CALL`agregar_empleado`('Yan','Ris',19667548,'1988/04/01',26,'Asistente',1);

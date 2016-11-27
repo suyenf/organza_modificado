@@ -1,0 +1,116 @@
+<?php
+include_once '../nucleo_php/coneccion.php';
+include_once '../nucleo_php/funciones.php';
+
+if (isset($_POST['enviar'])) {
+    $i = 0;
+    foreach ($_POST as $campo => $contenido) { //repite por cada elemento dentro de un array
+        if (empty($contenido)) { //verifico por cada uno de los capos cual esta vacio
+            $i++;
+        }
+    }
+    if ($i == 0) {//si no hay ninguno vacio guarda
+	    $sql = "INSERT INTO `producto`(NULL, '%s', %s,%s,'%s',%s,'%s','%s',%s)";
+        
+        
+		$sql = sprintf($sql, 
+			$_POST['nombre_p'], 
+			$_POST['precio_unitario'], 
+			$_POST['cant_existencia'], 
+			$_POST['descripcion'], 
+			$_POST['id_proveedor'], 
+			$_POST['id_marca'], 
+			$_POST['status'], 
+			$_POST['fecha_ingreso']);
+		  
+
+
+
+        //echo $sql;
+
+        mysql_qry($sql); // se inserta la data ejecutando la consulta sql
+    	
+        $info = 'Registro Guardado';
+    } else { //si no manda mensajitos de texto
+        $info = 'se enviaron campos vacios';
+    }
+	
+	
+	
+}
+?>
+<!DOCTYPE html>
+<html lang="es">
+    <head> <!-- -->
+        <meta charset="utf-8"/><!--ESTO ES UNIVERSAL-->
+        <title>Sistema de Inventario</title><!--NOMBRE QUE SE MUESTRA EN LA PESTANA DEL NAVEGADOR-->
+        <meta name="viewport" content="width=device-width,initial-scale=1"/><!--el viewport sirve para que el disp. este viendo la pag web como se le diga en el content...(la linea quiere decir que el ancho del contenido de este sitio se va a ver conforme sea el ancho del dispositivo, la escala inicial va a ser igual a 1)-->
+        <link rel="shortcut icon" type="image/x-icon" href="../favicon2.ico"/> <!--enlace para colocar el favicon.ICO-->
+        <link rel="sitemap" type="aplication/xml" title="sitemap" href="sitemap.xml"/>
+        <link rel="stylesheet" href="./../css/flexslider.css"/><!--enlazamos el slider-->
+        <link rel="stylesheet" href="./../css/menu.css"/><!--enlazamos el estilo del menu-->
+       <!-- <link rel="stylesheet" href="./../css/estilos.css"/> <!--enlace para el estilo de la pag-->
+
+
+        <!--LINKS PARA LOS JQUERYS QUE DESCARGUE -->
+        <script type="text/javascript" src="./../js/jquery.min.js"></script>					
+        <script type="text/javascript" src="./../js/jquery-ui-1.10.4.custom.min.js"></script>					
+        <!-- FIN DE LOS LINKS PARA LOS JQUERYS QUE DESCARGUE -->
+        <script src="./../js/jquery.flexslider.js"></script>
+        <script>
+
+            $(document).ready(function() {
+                $("a").button();
+                $(".flexslider").flexslider();
+            })
+
+        </script>
+    </head>
+    <!--TRABAJO DE MAQUETADO DE LA CABEZERA-->
+    <body>
+        <?php include_once './fragmentos/menu_header.php'; ?>
+
+
+        </br></br></br></br>				  				  
+        <h1>AGREGAR PRODUCTO</h1>
+        </br>
+        </br>
+        <article>
+            <section id="colmo">
+                <nav>
+
+                    <form method="post" action="">
+                        Producto : <input type="Text" name="nombre_p"><br><br>
+						Precio Unitario : <input type="Text" name="precio_unitario"><br><br>
+						Cant.:  <input type="Text" size="3" name="cant_existencia"><br><br>
+                        Descripci&oacute;n : <input type="Text" name="descripcion"><br><br>
+                        Proveedor : <input type="Text" name="id_proveedor"><br><br>
+                        Marca:<input type="Text" name="id_marca"><br><br>
+						Fecha de Ingreso:<input type="Text" name="fecha_ingreso"><br><br>
+                        Estado:<input type="Text" name="status"><br><br><br>
+						<input type="Submit" name="enviar" value="Guardar">
+                        <!--
+                        
+                        aprovecho el boton para ver si se esta enviando algo
+                        name == enviar
+                        
+                        -->
+                    </form>
+                </nav>
+
+            </section>	
+                <?php echo (isset($info)) ? $info : ''; ?>
+
+        </article>
+
+
+
+        </br>
+        </br>
+        </br>
+        <ul>
+    <ul><li>
+		<?php require_once './fragmentos/pie_de_pagina.php'; 
+		?>
+	</li>
+</html>
